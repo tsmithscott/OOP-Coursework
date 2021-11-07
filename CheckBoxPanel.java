@@ -18,7 +18,6 @@ public class CheckBoxPanel extends JPanel {
 	private JCheckBox chBox4;
 	private JCheckBox chBox5;
 
-
 	public CheckBoxPanel(ImageComponent imgComp) {
 
 		ActionListener actionListener = new ActionHandler(imgComp);
@@ -48,7 +47,6 @@ public class CheckBoxPanel extends JPanel {
 	class ActionHandler implements ActionListener {
 
 		private ImageComponent imgComp;
-
 		private Graphics g;
 
 		public ActionHandler(ImageComponent imgComp) {
@@ -59,6 +57,7 @@ public class CheckBoxPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 
 			JCheckBox checkbox = (JCheckBox) e.getSource();
+			
 			if (checkbox == chBox1) {
 				if (checkbox.isSelected()) {
 					String imageName = this.imgComp.getImageName();
@@ -113,6 +112,7 @@ public class CheckBoxPanel extends JPanel {
 						this.g = this.imgComp.image.getGraphics();
 						this.g.setFont(g.getFont().deriveFont(15f));
 						this.g.drawString("Date: " + imageDate, 10, 80);
+						
 					} catch (IOException ioException) {
 						ioException.printStackTrace();
 					}
