@@ -89,6 +89,7 @@ public class CheckBoxPanel extends JPanel {
 				}
 
 				this.imgComp.repaint();
+				
 			} else if (checkbox == chBox3) {
 				if (checkbox.isSelected()) {
 					long imageSize = this.imgComp.getImageSize();
@@ -103,6 +104,7 @@ public class CheckBoxPanel extends JPanel {
 				}
 
 				this.imgComp.repaint();
+				
 			} else if (checkbox == chBox4) {
 				if (checkbox.isSelected()) {
 					try {
@@ -121,6 +123,7 @@ public class CheckBoxPanel extends JPanel {
 				}
 
 				this.imgComp.repaint();
+				
 			} else if (checkbox == chBox5) {
 				if (checkbox.isSelected()) {
 					Dimension imageDimensions = this.imgComp.getImageDimensions();
