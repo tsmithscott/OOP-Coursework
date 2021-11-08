@@ -4,12 +4,7 @@ import javax.swing.JPanel;
 
 public class ImagePanel extends JPanel {
 
-	protected ImageComponent imgComp;
-
-	public ImagePanel(ImageComponent imgComp) {
-		this.imgComp = imgComp;
-		this.add(imgComp);
-	}
+	private ImageComponent imgComp;
 	
 	public ImagePanel() {
 		this.imgComp = new ImageComponent();
