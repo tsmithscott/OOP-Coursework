@@ -12,11 +12,11 @@ public class ButtonPanel extends JPanel {
 	private final JFileChooser fc = new JFileChooser();
 	private ImageComponent imgComp;
 
-	public ButtonPanel(ImageComponent imgComp) {
+	public ButtonPanel(ImageComponent imgComp, CheckBoxPanel cbPanel) {
 		
 		this.imgComp = imgComp;
 		this.add(this.button);
-		this.button.addActionListener((ev) -> updateFileObject(fc));
+		this.button.addActionListener((ev) -> updateFileObject(fc, cbPanel));
 
 	}
 
@@ -34,11 +34,12 @@ public class ButtonPanel extends JPanel {
 	}
 	
 	
-	public File updateFileObject(JFileChooser fc) {
+	public File updateFileObject(JFileChooser fc, CheckBoxPanel cbPanel) {
 		File file = new File(this.getPath(fc));
 		this.imgComp.updateImage(file);
 		this.imgComp.setImageName(fc.getSelectedFile().getName());
 		this.imgComp.setImagePath(fc.getSelectedFile().getAbsolutePath());
+		cbPanel.getActionHandler().flagCheck();
 		return file;
 	}
 }
