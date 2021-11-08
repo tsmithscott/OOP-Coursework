@@ -17,10 +17,11 @@ public class CheckBoxPanel extends JPanel {
 	private JCheckBox chBox3;
 	private JCheckBox chBox4;
 	private JCheckBox chBox5;
+	private ActionHandler actionListener;
 
 	public CheckBoxPanel(ImageComponent imgComp) {
 
-		ActionListener actionListener = new ActionHandler(imgComp);
+		this.actionListener = new ActionHandler(imgComp);
 
 		this.chBox1 = new JCheckBox("Name");
 		chBox1.addActionListener(actionListener);
@@ -42,6 +43,10 @@ public class CheckBoxPanel extends JPanel {
 		this.add(chBox3);
 		this.add(chBox4);
 		this.add(chBox5);
+	}
+	
+	public ActionHandler getActionHandler() {
+		return this.actionListener;
 	}
 
 	class ActionHandler implements ActionListener {
@@ -68,7 +73,7 @@ public class CheckBoxPanel extends JPanel {
 		
 		public void flagCheck() {
 			
-			if (this.chBox1Flag) {
+			if (this.chBox1Flag == true) {
 				String imageName = this.imgComp.getImageName();
 
 				this.g = this.imgComp.image.getGraphics();
@@ -77,7 +82,7 @@ public class CheckBoxPanel extends JPanel {
 				this.imgComp.repaint();
 			}
 			
-			if (this.chBox2Flag) {
+			if (this.chBox2Flag == true) {
 				String imagePath = this.imgComp.getImagePath();
 
 				this.g = this.imgComp.image.getGraphics();
@@ -86,7 +91,7 @@ public class CheckBoxPanel extends JPanel {
 				this.imgComp.repaint();
 			}
 			
-			if (this.chBox3Flag) {
+			if (this.chBox3Flag == true) {
 				long imageSize = this.imgComp.getImageSize();
 
 				this.g = this.imgComp.image.getGraphics();
@@ -95,7 +100,7 @@ public class CheckBoxPanel extends JPanel {
 				this.imgComp.repaint();
 			}
 			
-			if (this.chBox4Flag) {
+			if (this.chBox4Flag == true) {
 				try {
 					String imageDate = this.imgComp.getImageDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"));
 
@@ -108,7 +113,7 @@ public class CheckBoxPanel extends JPanel {
 				}
 			}
 			
-			if (this.chBox5Flag) {
+			if (this.chBox5Flag == true) {
 				Dimension imageDimensions = this.imgComp.getImageDimensions();
 
 				this.g = this.imgComp.image.getGraphics();
