@@ -20,12 +20,9 @@ public class ImageComponent extends JComponent {
 	private String image_name;
 	private String image_path;
 	private Dimension image_dimensions;
-	@SuppressWarnings("unused")
-	private String image_size;
 	private BasicFileAttributes metadata;
 	private FileTime imageDate;
-	public Graphics g;
-
+	
 	public ImageComponent() {
         setMinimumSize(new Dimension(400, 110));
 	}
@@ -45,18 +42,6 @@ public class ImageComponent extends JComponent {
         }
 	}
 	
-	
-	public void setImageName(String name) {
-		this.image_name = name;
-	}
-	
-	public void setImagePath(String path) {
-		this.image_path = path;
-	}
-
-	public BufferedImage getBufferedImage() {
-	    return this.image;
-    }
 
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -71,6 +56,17 @@ public class ImageComponent extends JComponent {
         g.drawImage(this.image, margin, margin, w, h, this);
     }
 
+	public void setImageName(String name) {
+		this.image_name = name;
+	}
+	
+	public void setImagePath(String path) {
+		this.image_path = path;
+	}
+
+	public BufferedImage getBufferedImage() {
+	    return this.image;
+    }
 
     public String getImageName() {
         return this.image_name;
