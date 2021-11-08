@@ -47,12 +47,78 @@ public class CheckBoxPanel extends JPanel {
 	class ActionHandler implements ActionListener {
 
 		private ImageComponent imgComp;
+
 		private Graphics g;
+		
+		private boolean chBox1Flag;
+		private boolean chBox2Flag;
+		private boolean chBox3Flag;
+		private boolean chBox4Flag;
+		private boolean chBox5Flag;
 
 		public ActionHandler(ImageComponent imgComp) {
 			this.imgComp = imgComp;
+			this.chBox1Flag = false;
+			this.chBox2Flag = false;
+			this.chBox3Flag = false;
+			this.chBox4Flag = false;
+			this.chBox5Flag = false;
 		}
 
+		
+		public void flagCheck() {
+			
+			if (this.chBox1Flag) {
+				String imageName = this.imgComp.getImageName();
+
+				this.g = this.imgComp.image.getGraphics();
+				this.g.setFont(g.getFont().deriveFont(15f));
+				this.g.drawString("Name: " + imageName, 10, 20);
+				this.imgComp.repaint();
+			}
+			
+			if (this.chBox2Flag) {
+				String imagePath = this.imgComp.getImagePath();
+
+				this.g = this.imgComp.image.getGraphics();
+				this.g.setFont(g.getFont().deriveFont(15f));
+				this.g.drawString("Path: " + imagePath, 10, 40);
+				this.imgComp.repaint();
+			}
+			
+			if (this.chBox3Flag) {
+				long imageSize = this.imgComp.getImageSize();
+
+				this.g = this.imgComp.image.getGraphics();
+				this.g.setFont(g.getFont().deriveFont(15f));
+				this.g.drawString("Size: " + imageSize + " Bytes", 10, 60);
+				this.imgComp.repaint();
+			}
+			
+			if (this.chBox4Flag) {
+				try {
+					String imageDate = this.imgComp.getImageDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"));
+
+					this.g = this.imgComp.image.getGraphics();
+					this.g.setFont(g.getFont().deriveFont(15f));
+					this.g.drawString("Date: " + imageDate, 10, 80);
+					this.imgComp.repaint();
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
+				}
+			}
+			
+			if (this.chBox5Flag) {
+				Dimension imageDimensions = this.imgComp.getImageDimensions();
+
+				this.g = this.imgComp.image.getGraphics();
+				this.g.setFont(g.getFont().deriveFont(15f));
+				this.g.drawString("Dimensions: " + imageDimensions.width + " x " + imageDimensions.height, 10, 100);
+				this.imgComp.repaint();
+			}
+		}
+		
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
@@ -65,10 +131,13 @@ public class CheckBoxPanel extends JPanel {
 					this.g = this.imgComp.image.getGraphics();
 					this.g.setFont(g.getFont().deriveFont(15f));
 					this.g.drawString("Name: " + imageName, 10, 20);
+					this.chBox1Flag = true;
 				}
 
 				else {
+					this.chBox1Flag = false;
 					this.imgComp.updateImage(new File(this.imgComp.getImagePath()));
+					flagCheck();
 
 				}
 
@@ -81,10 +150,13 @@ public class CheckBoxPanel extends JPanel {
 					this.g = this.imgComp.image.getGraphics();
 					this.g.setFont(g.getFont().deriveFont(15f));
 					this.g.drawString("Path: " + imagePath, 10, 40);
+					this.chBox2Flag = true;
 				}
 
 				else {
+					this.chBox2Flag = false;
 					this.imgComp.updateImage(new File(this.imgComp.getImagePath()));
+					flagCheck();
 				}
 
 				this.imgComp.repaint();
@@ -96,10 +168,13 @@ public class CheckBoxPanel extends JPanel {
 					this.g = this.imgComp.image.getGraphics();
 					this.g.setFont(g.getFont().deriveFont(15f));
 					this.g.drawString("Size: " + imageSize + " Bytes", 10, 60);
+					this.chBox3Flag = true;
 				}
 
 				else {
+					this.chBox3Flag = false;
 					this.imgComp.updateImage(new File(this.imgComp.getImagePath()));
+					flagCheck();
 				}
 
 				this.imgComp.repaint();
@@ -112,33 +187,39 @@ public class CheckBoxPanel extends JPanel {
 						this.g = this.imgComp.image.getGraphics();
 						this.g.setFont(g.getFont().deriveFont(15f));
 						this.g.drawString("Date: " + imageDate, 10, 80);
-						
+						this.chBox4Flag = true;
 					} catch (IOException ioException) {
 						ioException.printStackTrace();
 					}
 				}
 
 				else {
+					this.chBox4Flag = false;
 					this.imgComp.updateImage(new File(this.imgComp.getImagePath()));
+					flagCheck();
 				}
 
 				this.imgComp.repaint();
 				
-			} else if (checkbox == chBox5) {
+			} if (checkbox == chBox5) {
 				if (checkbox.isSelected()) {
 					Dimension imageDimensions = this.imgComp.getImageDimensions();
 
 					this.g = this.imgComp.image.getGraphics();
 					this.g.setFont(g.getFont().deriveFont(15f));
 					this.g.drawString("Dimensions: " + imageDimensions.width + " x " + imageDimensions.height, 10, 100);
+					this.chBox5Flag = true;
 				}
 
 				else {
+					this.chBox5Flag = false;
 					this.imgComp.updateImage(new File(this.imgComp.getImagePath()));
+					flagCheck();
 				}
 
 				this.imgComp.repaint();
 			}
+			
 		}
 
 	}
