@@ -10,8 +10,8 @@ public class ImageInfo extends JFrame {
 	
 	private ImagePanel imgPanel = new ImagePanel();
 	private ImageComponent imgComp = imgPanel.getImageComponent();
-	private ButtonPanel bPanel = new ButtonPanel(imgComp);
 	private CheckBoxPanel cbPanel = new CheckBoxPanel(imgComp);
+	private ButtonPanel bPanel = new ButtonPanel(imgComp, cbPanel);
 
 	public ImageInfo() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -36,5 +36,6 @@ public class ImageInfo extends JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> launch());
 	}
+
 
 }
