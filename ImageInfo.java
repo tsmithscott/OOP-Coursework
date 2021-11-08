@@ -17,15 +17,15 @@ public class ImageInfo extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Image Information");
 
-		this.setMinimumSize(new Dimension(400, 100));
-		this.setLayout(new BorderLayout());
+		setMinimumSize(new Dimension(400, 100));
+		setLayout(new BorderLayout());
 
-		this.add(cbPanel, BorderLayout.NORTH);
-		this.add(bPanel, BorderLayout.SOUTH);
-		this.add(imgPanel, BorderLayout.CENTER);
+		add(cbPanel, BorderLayout.NORTH);
+		add(bPanel, BorderLayout.SOUTH);
+		add(imgPanel, BorderLayout.CENTER);
 
-		this.pack();
-		this.setVisible(true);
+		pack();
+		setVisible(true);
 	}
 
 
@@ -36,6 +36,5 @@ public class ImageInfo extends JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> launch());
 	}
-
 
 }
